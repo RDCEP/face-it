@@ -1,0 +1,2 @@
+localhost sh /bin/sh
+localhost java /home/kcm92/jdk1.7.0_45/bin/java

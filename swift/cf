@@ -1,0 +1,9 @@
+wrapperlog.always.transfer=false
+sitedir.keep=true
+file.gc.enabled=false
+status.mode=provider
+execution.retries=0
+lazy.errors=false
+use.provider.staging=true
+provider.staging.pin.swiftfiles=true
+use.wrapper.staging=false

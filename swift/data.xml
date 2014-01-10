@@ -1,0 +1,21 @@
+<program xmlns="http://ci.uchicago.edu/swift/2009/02/swiftscript"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <types>
+     	<type>
+     		<typename>file</typename>
+     		<typealias>string</typealias>
+     		<typestructure></typestructure>
+     	</type>
+  </types>
+  <variable name="quaduijar" type="file" isGlobal="false" src="line 6"><file name="/home/kcm92/faceit-pipeline/quadui/quadui-1.2.1-SNAPSHOT-Beta13.jar"/></variable>
+  <variable name="acmouijar" type="file" isGlobal="false" src="line 7"><file name="/home/kcm92/faceit-pipeline/quadui/quadui-1.2.1-SNAPSHOT-Beta13.jar"/></variable>
+  <variable name="dssatexe" type="file" isGlobal="false" src="line 8"><file name="/home/kcm92/faceit-pipeline/quadui/quadui-1.2.1-SNAPSHOT-Beta13.jar"/></variable>
+  <variable name="regions" type="string[]" isGlobal="false" xsi:nil="true" src="line 10"/>
+  <assign src="line 11">
+   <variableReference>regions</variableReference>
+   <call proc="readData" src="line 10">
+     <input><stringConstant>regions.txt</stringConstant></input>
+   </call>
+  </assign>
+</program>
