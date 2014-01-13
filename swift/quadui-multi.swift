@@ -5,9 +5,9 @@ swift -tc.file tc -sites.file sites.local.xml -config cf quadui.swift -survey=/p
 type file;
 
 type Data{
-    file Survey_data;
-    file Field_data;
-    file Strategy_data;
+    string Survey_data;
+    string Field_data;
+    string Strategy_data;
     string quadui_outdir;
 }
 
@@ -26,12 +26,16 @@ string quadui_outdir = @arg("outdir");
 
 Data d[] = readData(@arg("data"));
 
-/* quadui stdout and stderr */
-file quadui_stdout_output <single_file_mapper; file=@strcat("logs/", "o_quadui.log")>;
-file quadui_stderr_output <single_file_mapper; file=@strcat("logs/", "e_quadui.log")>;
-
 /* run quadui */
 foreach ditem in d{
+    /* quadui stdout and stderr */
+    file quadui_stdout_output <single_file_mapper; file=@strcat("logs/", ditem.quadui_outdir, "o_quadui.log")>;
+    file quadui_stderr_output <single_file_mapper; file=@strcat("logs/", ditem.quadui_outdir, "e_quadui.log")>;
+    file Survey_data   <single_file_mapper; file=ditem.Survey_data>;
+    file Field_data    <single_file_mapper; file=ditem.Field_data>;
+    file Strategy_data <single_file_mapper; file=ditem.Strategy_data>;
+
     /*(quadui_stdout_output, quadui_stderr_output) = quadui (quaduijar, Survey_data, Field_data, Strategy_data, quadui_outdir);*/
-    (quadui_stdout_output, quadui_stderr_output) = quadui (quaduijar, ditem.Survey_data, ditem.Field_data, ditem.Strategy_data, ditem.quadui_outdir);
+    (quadui_stdout_output, quadui_stderr_output) = quadui (quaduijar, Survey_data, Field_data, Strategy_data, ditem.quadui_outdir);
+#tracef("Employee %s", ditem.Survey_data);
 }
