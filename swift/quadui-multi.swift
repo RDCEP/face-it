@@ -9,6 +9,7 @@ type Data{
     string Field_data;
     string Strategy_data;
     string quadui_outdir;
+    string dssat_outdir;
 }
 
 app (file _stdout, file _stderr) quadui (file _quaduijar, file _Survey_data, file _Field_data, file _Strategy_data, string _outdir){
