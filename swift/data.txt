@@ -1,0 +1,3 @@
+/home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/MID/EMBU
+/home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/MID/ISHIARA
+/home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/MID/KINDARUMA
