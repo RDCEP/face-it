@@ -2,7 +2,7 @@
 set -x
 #set -e
 
-quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta13.jar"
+quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta14.jar"
 acmouijar="./exec/acmoui-1.2-SNAPSHOT-beta4.jar"
 
 datadir="./data/FIXED_ACE_DOME"
@@ -51,7 +51,7 @@ do
     echo " DSSAT done, Run acmoui ..."
     for i in ${outdir}/DSSAT/*.SNX
     do
-        cp ${i}_dir/* ${outdir}/DSSAT
+        cat ${i}_dir/Summary.OUT >> ${outdir}/DSSAT/Summary.OUT
     done
     java -jar $acmouijar -cli -dssat ${outdir}/DSSAT
     #
