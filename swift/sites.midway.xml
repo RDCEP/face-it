@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.ci.uchicago.edu/swift/SwiftSites">
+ <pool handle="midway">
+   <execution provider="coaster" jobmanager="local:slurm"/>
+   <profile namespace="globus" key="queue">sandyb</profile>
+   <profile namespace="globus" key="jobsPerNode">16</profile>
+   <profile namespace="globus" key="maxWalltime">01:30:00</profile>
+   <profile namespace="globus" key="maxTime">8000</profile>
+   <profile namespace="globus" key="highOverAllocation">100</profile>
+   <profile namespace="globus" key="lowOverAllocation">100</profile>
+   <profile namespace="globus" key="slots">2</profile>
+   <profile namespace="globus" key="maxNodes">1</profile>
+   <profile namespace="globus" key="nodeGranularity">1</profile>
+   <profile namespace="karajan" key="jobThrottle">0.19</profile>
+   <profile namespace="karajan" key="initialScore">10000</profile>
+   <workdirectory>/home/{env.USER}/swift.workdir</workdirectory>
+  </pool>
+</config>
