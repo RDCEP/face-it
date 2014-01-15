@@ -16,15 +16,16 @@ app (file _stdout, file _stderr) acmoui (file _acmoui_wrapper, file _acmouijar, 
 
 /* Data definitions for the Face-it AgMIP pipeline */
 
-file quaduijar<"../quadui/quadui-1.2.1-SNAPSHOT-Beta13.jar">;
-file acmouijar<"../acmo/acmoui-1.2-SNAPSHOT-beta4.jar">;
+file quaduijar<"../exec/quadui-1.2.1-SNAPSHOT-Beta13.jar">;
+file acmouijar<"../exec/acmoui-1.2-SNAPSHOT-beta4.jar">;
 
-file dssat_exe<"../DSCSM045.EXE">;
+file dssat_exe<"./DSCSM045.EXE">;
 file dssat_wrapper<"./dssat_wrapper.sh">;
-file dssat_aux<"../dssat_aux.tgz">;
+file dssat_aux<"./dssat_aux.tgz">;
 file acmoui_wrapper<"./acmoui_wrapper.sh">;
 
-string regions[] = readData("regions.txt");
+/*string regions[] = readData("regions.txt");*/
+string regions[] = readData("regions-midway.txt");
 
 foreach region, i in regions{
     
