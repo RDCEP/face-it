@@ -2,11 +2,13 @@
 set -x
 #set -e
 
-quaduijar="./quadui/quadui-1.2.1-SNAPSHOT-Beta13.jar"
-acmouijar="./acmo/acmoui-1.2-SNAPSHOT-beta4.jar"
+quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta14.jar"
+acmouijar="./exec/acmoui-1.2-SNAPSHOT-beta4.jar"
+
+datadir="./data/FIXED_ACE_DOME"
 
 #for zipfile in `find faceit-eastafrica-data -iname "Field*.zip"`
-for zipfile in `find FIXED_ACE_DOME -iname "Field*.zip"`
+for zipfile in $(find $datadir -iname "Field*.zip")
 do 
     dirname=`dirname $zipfile`
 
@@ -24,7 +26,7 @@ do
     #time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -zip -clean -f -s -D $surveydata $linkagedata $fielddata $strategydata $outdir
     
     #Copy DSSAT Auxiliary file bundle to outdir/DSSAT
-    cp dssat_aux.tgz $outdir/DSSAT
+    cp ./exec/dssat_aux.tgz $outdir/DSSAT
     
     #unzip quadoutdir/DSSAT and the DSSAT_Input.zip
     cd $outdir/DSSAT
@@ -38,10 +40,10 @@ do
     #
     for i in *.SNX
     do
-        ./DSCSM045.EXE A $i
-        rm -f SoilOrg.OUT PlantGro.OUT OVERVIEW.OUT LUN.LST DSSAT45.INP DSSAT45.INH
-        mkdir -p ${i}_dir
-        mv *.OUT ${i}_dir
+      ./DSCSM045.EXE A $i
+      rm -f SoilOrg.OUT PlantGro.OUT OVERVIEW.OUT LUN.LST DSSAT45.INP DSSAT45.INH
+      mkdir -p ${i}_dir
+      mv *.OUT ${i}_dir
     done 
     #
     cd -
@@ -49,9 +51,9 @@ do
     echo " DSSAT done, Run acmoui ..."
     for i in ${outdir}/DSSAT/*.SNX
     do
-        cp ${i}_dir/* ${outdir}/DSSAT
-        java -jar $acmouijar -cli -dssat ${outdir}/DSSAT
+        cat ${i}_dir/Summary.OUT >> ${outdir}/DSSAT/Summary.OUT
     done
+    java -jar $acmouijar -cli -dssat ${outdir}/DSSAT
     #
     echo "Done. Check out results in $outdir/DSSAT"
 done
