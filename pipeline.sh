@@ -2,6 +2,7 @@
 set -x
 #set -e
 
+
 #quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta14.jar"
 quaduijar="./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar"
 acmouijar="./exec/acmoui-1.2-SNAPSHOT-beta4.jar"
@@ -24,6 +25,8 @@ do
     sleep 1
     
     echo " Run quadui ... "
+    #Example call to quadui
+    #java -Xms256m -Xmx768m -jar ./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar -cli -clean -f -s -D ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Survey_data_import.zip ' ' ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Field_Overlay.zip ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Seasonal_strategy.zip ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU_outdir
     time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata ' '  $fielddata $strategydata $outdir
     #time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata $linkagedata $fielddata $strategydata $outdir
     
