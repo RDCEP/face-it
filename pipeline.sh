@@ -2,8 +2,8 @@
 set -x
 #set -e
 
-quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta14.jar"
-#quaduijar="./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar"
+#quaduijar="./exec/quadui-1.2.1-SNAPSHOT-Beta14.jar"
+quaduijar="./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar"
 acmouijar="./exec/acmoui-1.2-SNAPSHOT-beta4.jar"
 
 datadir="./data/FIXED_ACE_DOME"
