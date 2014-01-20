@@ -37,7 +37,7 @@ do
     echo "quadui done,  run DSSAT ... "
     #sleep 1
     #
-    $DSSATHOME/DSCSM045.EXE b DSSBatch.v45 DSCSM046.CTR
+    $DSSATHOME/DSCSM045.EXE b DSSBatch.v45 DSCSM046.CTR >> $currdir.errout 2>&1
     #
     cd -
     #
