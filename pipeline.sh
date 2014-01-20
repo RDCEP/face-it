@@ -26,12 +26,13 @@ do
     
     echo " Run quadui ... "
     #Example call to quadui
-    #java -Xms256m -Xmx768m -jar ./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar -cli -clean -f -s -D ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Survey_data_import.zip ' ' ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Field_Overlay.zip ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Seasonal_strategy.zip ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU_outdir
-    time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata ' '  $fielddata $strategydata $outdir
-    #time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata $linkagedata $fielddata $strategydata $outdir
+    #java -Xms256m -Xmx768m -jar ./exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar -cli -clean -f -s -D
+    # ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Survey_data_import.zip ' ' ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Field_Overlay.zip
+    # ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU/Seasonal_strategy.zip ./data/FIXED_ACE_DOME/ACCESS1/4.5/END/EMBU_outdir
     
-    cd $outdir/DSSAT
-    for i in $(\ls $DSSATHOME); do ln -s $DSSATHOME/$i $i; done 
+    time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata ' '  $fielddata $strategydata $outdir
+    
+    cd $outdir/DSSAT && for i in $(\ls $DSSATHOME); do ln -s $DSSATHOME/$i $i; done 
 
     echo "quadui done,  run DSSAT ... "
     #sleep 1
