@@ -1,5 +1,5 @@
 /*
-swift -tc.file tc -sites.file sites.local.xml -config cf quadui.swift -survey=/pathof/Survey_data_import.zip -field=/pathof/Field_Overlay.zip -strategy=/pathof/Seasonal_strategy.zip -outdir=/pathto/outdir -jar=/pathof/quadui-1.2.1-SNAPSHOT-Beta13.jar
+swift -tc.file tc -sites.file sites.local.xml -config cf quadui.swift -survey=/pathof/Survey_data_import.zip -field=/pathof/Field_Overlay.zip -strategy=/pathof/Seasonal_strategy.zip -outdir=/pathto/outdir -jar=/pathof/quadui....jar
 */
 
 type file;
@@ -18,13 +18,6 @@ app (file _stdout, file _stderr) quadui (file _quaduijar, file _Survey_data, fil
 
 file quaduijar<single_file_mapper; file=@arg("jar")>;
 
-/*
-file Survey_data   <single_file_mapper; file=@arg("survey")>;
-file Field_data    <single_file_mapper; file=@arg("field")>;
-file Strategy_data <single_file_mapper; file=@arg("strategy")>;
-string quadui_outdir = @arg("outdir");
-*/
-
 Data d[] = readData(@arg("data"));
 
 /* run quadui */
@@ -36,7 +29,5 @@ foreach ditem in d{
     file Field_data    <single_file_mapper; file=ditem.Field_data>;
     file Strategy_data <single_file_mapper; file=ditem.Strategy_data>;
 
-    /*(quadui_stdout_output, quadui_stderr_output) = quadui (quaduijar, Survey_data, Field_data, Strategy_data, quadui_outdir);*/
     (quadui_stdout_output, quadui_stderr_output) = quadui (quaduijar, Survey_data, Field_data, Strategy_data, ditem.quadui_outdir);
-#tracef("Employee %s", ditem.Survey_data);
 }

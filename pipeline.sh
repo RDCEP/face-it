@@ -39,7 +39,6 @@ do
     
     time -p java -Xms256m -Xmx768m -jar $quaduijar -cli -clean -f -s -D $surveydata ' '  $fielddata $strategydata $outdir
 
-    
     cd $outdir/DSSAT && for i in $(\ls $DSSATHOME); do ln -s $DSSATHOME/$i $i; done 
 
     echo "quadui done,  run DSSAT ... "
