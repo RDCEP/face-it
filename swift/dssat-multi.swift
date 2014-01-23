@@ -12,9 +12,9 @@ app (file _stdout, file _stderr) dssat (file _dssat_wrapper, file _dssatexe, fil
     sh @_dssat_wrapper @_dssatexe @_dssat_aux @_dssat_input_zip _outdir stdout=@_stdout stderr=@_stderr;
 }
 
-file dssat_exe<"./DSCSM045.EXE">;
-file dssat_wrapper<"./dssat_wrapper.sh">;
-file dssat_aux<"./dssat_aux.tgz">;
+file dssat_exe<"/home/kcm92/faceit-gitrepo/exec/dssat_aux/DSCSM045.EXE">;
+file dssat_wrapper<"/home/kcm92/faceit-gitrepo/swift/dssat_wrapper.sh">;
+file dssat_aux<"/home/kcm92/faceit-gitrepo/exec/dssat_aux.tgz">;
 
 Data d[] = readData(@arg("data"));
 
@@ -27,7 +27,9 @@ foreach region, i in d{
     file dssat_stdout_output <single_file_mapper; file=@strcat("logs/", region.quadui_outdir, "o_dssat.log")>;
     file dssat_stderr_output <single_file_mapper; file=@strcat("logs/", region.quadui_outdir, "e_dssat.log")>; 
 
-    /* run dssat */
+    /* run dssat
+       Commandline of DSSAT: $DSSATHOME/DSCSM045.EXE b DSSBatch.v45 DSCSM046.CTR
+    */
     (dssat_stdout_output, dssat_stderr_output) = dssat (dssat_wrapper, dssat_exe, dssat_aux, dssat_inputzip, dssat_outdir);    
 }
 
