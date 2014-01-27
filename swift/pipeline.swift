@@ -16,7 +16,7 @@ app (file _stdout, file _stderr) acmoui (file _acmoui_wrapper, file _acmouijar, 
 
 /* Data definitions for the Face-it AgMIP pipeline */
 
-file quaduijar<"../exec/quadui-1.2.1-SNAPSHOT-Beta13.jar">;
+file quaduijar<"/home/kcm92/faceit-gitrepo/exec/quadui-1.2.1-SNAPSHOT-jar-with-dependencies.jar">;
 file acmouijar<"../exec/acmoui-1.2-SNAPSHOT-beta4.jar">;
 
 file dssat_exe<"./DSCSM045.EXE">;

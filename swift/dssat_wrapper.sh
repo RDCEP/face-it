@@ -2,28 +2,22 @@
 set -x
 
 #sh @_dssat_wrapper @_dssatexe @_dssat_aux @_dssat_input_zip _outdir stdout=@_stdout stderr=@_stderr;
-#e.g. home/kcm92/faceit-pipeline/DSCSM045.EXE home/kcm92/faceit-pipeline/dssat_aux.tgz home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/END/ISHIARA_outdir/DSSAT/dssat_input.zip /home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/END/ISHIARAdssat_outdir
 
-dssatexe=$1 # home/kcm92/faceit-pipeline/DSCSM045.EXE
-dssat_aux=$2 # home/kcm92/faceit-pipeline/dssat_aux.tgz
-dssat_input_zip=$3 # home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/END/ISHIARA_outdir/DSSAT/DSSAT_Input.zip
-outdir=$4 # /home/kcm92/faceit-pipeline/FIXED_ACE_DOME/ACCESS1/4.5/END/ISHIARAdssat_outdir
+dssatexe=$1 
+dssat_aux=$2 
+dssat_input_zip=$3 
+outdir=$4 
 
 echo $@
 
 mkdir -p $outdir
 tar -C $outdir -zxf $dssat_aux
 cp $dssat_input_zip $outdir
-cp $dssatexe $outdir
 cd $outdir && unzip $(basename $dssat_input_zip)
+#for i in $(\ls $dssat_aux); do ln -s $dssat_aux/$i $i; done
 mv dssat_aux/* .
-ls
 #Run DSSAT here
-for i in *.SNX
-do
-    ./$(basename $dssatexe) A $i
-    rm -f SoilOrg.OUT PlantGro.OUT OVERVIEW.OUT LUN.LST DSSAT45.INP DSSAT45.INH
-    mkdir -p ${i}_dir
-    mv *.OUT ${i}_dir
-done
+#Commandline of DSSAT: $DSSATHOME/DSCSM045.EXE b DSSBatch.v45 DSCSM046.CT
+./$(basename $dssatexe) b DSSBatch.v45 DSCSM046.CT
+rm -f SoilOrg.OUT PlantGro.OUT OVERVIEW.OUT LUN.LST DSSAT45.INP DSSAT45.INH
 
