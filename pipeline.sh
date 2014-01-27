@@ -51,6 +51,10 @@ do
     echo " DSSAT done, Run acmoui ..."
     java -jar $acmouijar -cli -dssat ${outdir}/DSSAT
     #
+    #python /project/joshuaelliott/face-it/viz-acmo/bin/faceitviz.py -i ./ACCESS1/4.5/MID/EMBUdssat_outdir/ACMO-EMBU-2-0XFX-0-0-DSSAT.csv -v HWAH_S,CWAH_S -f png -o tmp/
+    export PYTHONPATH=/project/joshuaelliott/face-it/viz-acmo/bin:$PYTHONPATH
+    mkdir ${outdir}/viz
+    python /project/joshuaelliott/face-it/viz-acmo/bin/faceitviz.py -i ${outdir}/DSSAT -v HWAH_S,CWAH_S -f png -o ${outdir}/viz
     echo "Done. Check out results in $outdir/DSSAT"
 done
 
